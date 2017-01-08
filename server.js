@@ -6,14 +6,14 @@ import React from 'react'
 import { renderToString } from 'react-dom/server'
 // use these to match url to routes and render matching components
 import { match, RouterContext } from 'react-router'
-import { routes } from './app/config/routes'
+import routes from './app/config/routes'
 
 var app = express()
 
 app.use(compression())
 
 // serve our static stuff like index.css
-app.use(express.static(path.join(__dirname, 'app')))
+app.use(express.static(path.resolve(__dirname, 'dist'), {index: false}))
 
 // send all requests to index.html so browserHistory works
 app.get('*', function (req, res) {
@@ -40,17 +40,6 @@ app.get('*', function (req, res) {
     }
   })
 })
-
-function renderPage(appHtml) {
-  return `
-    <!doctype html public="storage">
-    <html>
-    <meta charset=utf-8/>
-    <title>My First React Router App</title>
-    <div id=app>${appHtml}</div>
-    <script src="/dist/index_bundle.js"></script>
-   `
-}
 
 var PORT = process.env.PORT || 8080
 app.listen(PORT, function() {

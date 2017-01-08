@@ -56,6 +56,8 @@
 
 	var _routes = __webpack_require__(4);
 
+	var _routes2 = _interopRequireDefault(_routes);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var express = __webpack_require__(7);
@@ -71,13 +73,13 @@
 	app.use(compression());
 
 	// serve our static stuff like index.css
-	app.use(express.static(path.join(__dirname, 'dist')));
+	app.use(express.static(path.resolve(__dirname, 'dist'), { index: false }));
 
 	// send all requests to index.html so browserHistory works
 	app.get('*', function (req, res) {
 
 	  //match the routes to the url
-	  (0, _reactRouter.match)({ routes: _routes.routes, location: req.url }, function (err, redirect, props) {
+	  (0, _reactRouter.match)({ routes: _routes2.default, location: req.url }, function (err, redirect, props) {
 	    // RouterContext is what the Router renders. Router keeps these
 	    // props in its state as it listens to browserHistory. But our app
 	    // is stateless on the server so we need to use match to get these
@@ -98,10 +100,6 @@
 	    }
 	  });
 	});
-
-	function renderPage(appHtml) {
-	  return '\n    <!doctype html public="storage">\n    <html>\n    <meta charset=utf-8/>\n    <title>My First React Router App</title>\n    <div id=app>' + appHtml + '</div>\n    <script src="/dist/index_bundle.js"></script>\n   ';
-	}
 
 	var PORT = process.env.PORT || 8080;
 	app.listen(PORT, function () {

@@ -23,7 +23,8 @@ module.exports = {
   plugins: process.env.NODE_ENV === 'production' ? [
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin()
+    new webpack.optimize.UglifyJsPlugin(),
+    HtmlWebpackPluginConfig
   ] : [HtmlWebpackPluginConfig],
 
 }
