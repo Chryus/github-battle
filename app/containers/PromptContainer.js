@@ -1,21 +1,21 @@
 import React from 'react'
-import styles from '../styles'
+import Prompt from '../components/Prompt'
 
 class PromptContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = { username: '' }
-    this.onUpdateUser = this.onUpdateUser.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleUpdateUser = this.handleUpdateUser.bind(this);
+    this.handleSubmitUser = this.handleSubmitUser.bind(this);
   }
 
-  onUpdateUser(event) {
+  handleUpdateUser(event) {
     this.setState({
       username: event.target.value
     });
   }
 
-  handleSubmit(event) {
+  handleSubmitUser(event) {
     event.preventDefault()
 
     if (this.props.params.playerOne) {
@@ -35,28 +35,11 @@ class PromptContainer extends React.Component {
 
   render () {
     return (
-       <div className="jumbotron col-sm-6 col-sm-offset-3 text-center" style={styles.transparentBg}>
-        <h1>{this.props.route.header}</h1>
-        <div className="col-sm-12">
-          <form onSubmit={this.handleSubmit}>
-            <div className="form-group">
-              <input 
-                className="form-control" 
-                placeholder="Github Username"
-                type="text"
-                onChange={this.onUpdateUser} 
-                value={this.state.username} />
-            </div>
-            <div className="form-group col-sm-4 col-sm-offset-4">
-              <button
-                className="btn btn-block btn-success"
-                type="submit">
-                  Continue
-              </button>
-            </div>
-          </form>
-        </div>
-       </div>
+      <Prompt
+        onSubmitUser={this.handleSubmitUser}
+        onUpdateUser={this.handleUpdateUser}
+        header={this.props.route.header}
+        username={this.state.username} />
     );
   }
 }
