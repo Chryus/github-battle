@@ -60,9 +60,9 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var express = __webpack_require__(7);
-	var path = __webpack_require__(8);
-	var compression = __webpack_require__(9);
+	var express = __webpack_require__(8);
+	var path = __webpack_require__(9);
+	var compression = __webpack_require__(10);
 	// use this to render app to html string
 
 	// use these to match url to routes and render matching components
@@ -145,6 +145,10 @@
 
 	var _Home2 = _interopRequireDefault(_Home);
 
+	var _PromptContainer = __webpack_require__(7);
+
+	var _PromptContainer2 = _interopRequireDefault(_PromptContainer);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	module.exports = _react2.default.createElement(
@@ -153,7 +157,9 @@
 	  _react2.default.createElement(
 	    _reactRouter.Route,
 	    { path: '/', component: _App2.default },
-	    _react2.default.createElement(_reactRouter.IndexRoute, { path: '/home', component: _Home2.default })
+	    _react2.default.createElement(_reactRouter.IndexRoute, { component: _Home2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { path: 'playerOne', header: 'Player One', component: _PromptContainer2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { path: 'playerTwo/:playerOne', header: 'Player Two', component: _PromptContainer2.default })
 	  )
 	);
 
@@ -218,18 +224,77 @@
 
 /***/ },
 /* 7 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = require("express");
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _react2.default.createClass({
+	  displayName: "PromptContainer",
+	  render: function render() {
+	    console.log(this);
+	    return _react2.default.createElement(
+	      "div",
+	      { className: "jumbotron col-sm-6 col-sm-offset-3 text-center" },
+	      _react2.default.createElement(
+	        "h1",
+	        null,
+	        this.props.route.header
+	      ),
+	      _react2.default.createElement(
+	        "div",
+	        { className: "col-sm-12" },
+	        _react2.default.createElement(
+	          "form",
+	          null,
+	          _react2.default.createElement(
+	            "div",
+	            { className: "form-group" },
+	            _react2.default.createElement("input", {
+	              className: "form-control",
+	              placeholder: "Github Username",
+	              type: "text" })
+	          ),
+	          _react2.default.createElement(
+	            "div",
+	            { className: "form-group col-sm-4 col-sm-offset-4" },
+	            _react2.default.createElement(
+	              "button",
+	              {
+	                className: "btn btn-block btn-success",
+	                type: "submit" },
+	              "Continue"
+	            )
+	          )
+	        )
+	      )
+	    );
+	  }
+	});
 
 /***/ },
 /* 8 */
 /***/ function(module, exports) {
 
-	module.exports = require("path");
+	module.exports = require("express");
 
 /***/ },
 /* 9 */
+/***/ function(module, exports) {
+
+	module.exports = require("path");
+
+/***/ },
+/* 10 */
 /***/ function(module, exports) {
 
 	module.exports = require("compression");
