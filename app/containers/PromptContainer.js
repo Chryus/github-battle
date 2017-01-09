@@ -1,9 +1,26 @@
 import React from 'react'
 import styles from '../styles'
 
-export default React.createClass({
+class PromptContainer extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { username: '' }
+    this.onUpdateUser = this.onUpdateUser.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  onUpdateUser(event) {
+    this.setState({
+      username: event.target.value
+    });
+  }
+
+  handleSubmit(event) {
+    event.preventDefault()
+    const path = `pathtogithubapi/${this.state.username}`
+  }
+
   render () {
-    console.log(this)
     return (
        <div className="jumbotron col-sm-6 col-sm-offset-3 text-center" style={styles.transparentBg}>
         <h1>{this.props.route.header}</h1>
@@ -13,12 +30,15 @@ export default React.createClass({
               <input 
                 className="form-control" 
                 placeholder="Github Username"
-                type="text" />
+                type="text"
+                onChange={this.onUpdateUser} 
+                value={this.state.username} />
             </div>
             <div className="form-group col-sm-4 col-sm-offset-4">
               <button
                 className="btn btn-block btn-success"
-                type="submit">
+                type="submit"
+                onSubmit={this.handleSubmit}>
                   Continue
               </button>
             </div>
@@ -27,4 +47,6 @@ export default React.createClass({
        </div>
     );
   }
-})
+}
+
+export default PromptContainer; 
