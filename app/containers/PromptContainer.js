@@ -17,7 +17,20 @@ class PromptContainer extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    const path = `pathtogithubapi/${this.state.username}`
+
+    if (this.props.params.playerOne) {
+      // go to battle
+      this.context.router.push({
+        pathname: '/battle',
+        query: {
+          playerOne: this.props.params.playerOne,
+          playerTwo: this.state.username
+        }
+      })
+    } else {
+      this.context.router.push('/playerTwo/' + this.state.username)
+    }
+    this.setState({ username: '' })
   }
 
   render () {
@@ -25,7 +38,7 @@ class PromptContainer extends React.Component {
        <div className="jumbotron col-sm-6 col-sm-offset-3 text-center" style={styles.transparentBg}>
         <h1>{this.props.route.header}</h1>
         <div className="col-sm-12">
-          <form>
+          <form onSubmit={this.handleSubmit}>
             <div className="form-group">
               <input 
                 className="form-control" 
@@ -37,8 +50,7 @@ class PromptContainer extends React.Component {
             <div className="form-group col-sm-4 col-sm-offset-4">
               <button
                 className="btn btn-block btn-success"
-                type="submit"
-                onSubmit={this.handleSubmit}>
+                type="submit">
                   Continue
               </button>
             </div>
@@ -48,5 +60,9 @@ class PromptContainer extends React.Component {
     );
   }
 }
+
+PromptContainer.contextTypes = {
+  router: React.PropTypes.object
+};
 
 export default PromptContainer; 
