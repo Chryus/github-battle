@@ -17,6 +17,7 @@ class PromptContainer extends React.Component {
 
   handleSubmitUser(event) {
     event.preventDefault()
+    this.setState({ username: '' })
 
     if (this.props.params.playerOne) {
       // go to battle
@@ -30,7 +31,6 @@ class PromptContainer extends React.Component {
     } else {
       this.context.router.push('/playerTwo/' + this.state.username)
     }
-    this.setState({ username: '' })
   }
 
   render () {
