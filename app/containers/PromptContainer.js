@@ -3,7 +3,7 @@ import Prompt from '../components/Prompt'
 
 class PromptContainer extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = { username: '' }
     this.handleUpdateUser = this.handleUpdateUser.bind(this);
     this.handleSubmitUser = this.handleSubmitUser.bind(this);
