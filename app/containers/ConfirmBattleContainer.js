@@ -1,5 +1,6 @@
 import React from 'react'
 import ConfirmBattle from '../components/ConfirmBattle'
+import githubHelpers from '../utils/githubHelpers'
 
 class ConfirmBattleContainer extends React.Component {
   constructor(props) {
@@ -11,12 +12,21 @@ class ConfirmBattleContainer extends React.Component {
 
   componentDidMount() {
     let query = this.props.location.query;
-    //fetch user info from github and update state
+    githubHelpers.getPlayersInfo([query.playerOne, query.playerTwo])
+      .then((players) => {
+        this.setState({
+          isLoading: false,
+          playerInfo: [players[0], players[1]]
+        })
+      })
   }
 
   render() {
     return (
-      <ConfirmBattle isLoading={this.state.isLoading}/>
+      <ConfirmBattle 
+        isLoading={this.state.isLoading}
+        playerInfo={this.state.playerInfo}
+      />
     );
   }
 }
