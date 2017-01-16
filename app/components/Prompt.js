@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from '../styles'
-let PropTypes = React.PropTypes
+const PropTypes = React.PropTypes
 
 
 function Prompt(props) {
