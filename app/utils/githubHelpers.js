@@ -10,7 +10,7 @@ function getUserInfo(username) {
 
 module.exports = ({
   getPlayersInfo: function(players) {
-    return axios.all(players.map( (username) => {
+    return axios.all(players.map((username) => {
       return getUserInfo(username)
     }))
     .then((info) => {
