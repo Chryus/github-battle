@@ -16,10 +16,10 @@ function ConfirmBattle(props) {
     : <div className='jumbotron col-sm-12 text-center' style={styles.transparentBg}>
         <h1>Confirm Players</h1>
         <div className='col-sm-8 col-sm-offset-2'>
-          <UserDetailsWrapper user="Player 1">
+          <UserDetailsWrapper header="Player 1">
             <UserDetails info={props.playersInfo[0]}/>
           </UserDetailsWrapper>
-          <UserDetailsWrapper user="Player 2">
+          <UserDetailsWrapper header="Player 2">
             <UserDetails info={props.playersInfo[1]}/>
           </UserDetailsWrapper>
         </div>
