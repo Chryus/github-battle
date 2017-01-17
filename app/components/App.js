@@ -4,7 +4,7 @@ export default React.createClass({
   render() {
     return (
       <div>
-        <h1>Hello from Main!</h1>
+        <h1 className="text-center">Github Battle!</h1>
         {this.props.children}
       </div>
     ) 

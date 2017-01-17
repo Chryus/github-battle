@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router'
-import styles from '../styles/index'
 import UserDetails from './UserDetails'
 import UserDetailsWrapper from './UserDetailsWrapper'
 
@@ -13,7 +12,7 @@ const PropTypes = React.PropTypes
 function ConfirmBattle(props) {
   return props.isLoading === true
     ? <p>LOADING...</p> 
-    : <div className='jumbotron col-sm-12 text-center' style={styles.transparentBg}>
+    : <div className='jumbotron col-sm-12 text-center transparentBg'>
         <h1>Confirm Players</h1>
         <div className='col-sm-8 col-sm-offset-2'>
           <UserDetailsWrapper header="Player 1">
@@ -24,12 +23,12 @@ function ConfirmBattle(props) {
           </UserDetailsWrapper>
         </div>
         <div className='col-sm-8 col-sm-offset-2'>
-          <div className='col-sm-12' style={styles.space}>
+          <div className='col-sm-12 space'>
             <button type='button' className='btn btn-lg btn-success' onClick={props.onInitiateBattle}>
               Initiate Battle!
             </button>
           </div>
-          <div className='col-sm-12' style={styles.space}>
+          <div className='col-sm-12 space'>
             <Link to='/playerOne'>
               <button type='button' className='btn btn-lg btn-danger'>Reselect Players</button>
             </Link>
