@@ -1,7 +1,6 @@
 import React from 'react'
 import ConfirmBattle from '../components/ConfirmBattle'
 import githubHelpers from '../utils/githubHelpers'
-import UserDetails from '../containers/UserDetails'
 
 class ConfirmBattleContainer extends React.Component {
   constructor(props) {

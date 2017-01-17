@@ -1,7 +1,8 @@
 import React from 'react'
+
 const PropTypes = React.PropTypes
 
-function userDetails(user) {
+function UserDetails(user) {
   return (
     <div>
       {!!user.score && <li className="list-group-item"><h3>Score: {user.score}</h3></li>}
@@ -32,3 +33,5 @@ UserDetails.propTypes = {
     public_repos: PropTypes.number.isRequired
   })
 }
+
+export default UserDetails;
