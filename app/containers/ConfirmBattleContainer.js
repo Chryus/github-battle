@@ -4,8 +4,8 @@ import githubHelpers from '../utils/githubHelpers'
 
 class ConfirmBattleContainer extends React.Component {
   constructor(props) {
-    super(props)
-    this.handleInitiateBattle = this.handleInitiateBattle.bind(this)
+    super(props);
+    this.handleInitiateBattle = this.handleInitiateBattle.bind(this);
     this.state = { 
       isLoading: true,
       playersInfo: [] 
@@ -24,7 +24,7 @@ class ConfirmBattleContainer extends React.Component {
   componentDidMount() {
     let query = this.props.location.query;
     githubHelpers.getPlayersInfo([query.playerOne, query.playerTwo])
-    .then( (players) => {
+    .then((players) => {
       this.setState({
         isLoading: false,
         playersInfo: [players[0], players[1]]
