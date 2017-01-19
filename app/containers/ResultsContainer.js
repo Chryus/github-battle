@@ -16,7 +16,7 @@ class ResultsContainer extends React.Component {
       .then((scores) => {
         this.setState({
           scores: scores,
-          isLoading: false
+          isLoading: true
         })
       })
   }
