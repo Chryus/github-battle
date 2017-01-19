@@ -3,6 +3,7 @@ import { Link } from 'react-router'
 import UserDetails from './UserDetails'
 import UserDetailsWrapper from './UserDetailsWrapper'
 import MainContainer from '../containers/MainContainer'
+import Loading from './Loading'
 
 const PropTypes = React.PropTypes;
 
@@ -23,7 +24,7 @@ function StartOver() {
 function Results(props) {
   if (props.isLoading === true) {
     return (
-      <p> LOADING </p>
+      <Loading />
     )
   }
   

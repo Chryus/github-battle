@@ -6,7 +6,7 @@ class ResultsContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoading: false,
+      isLoading: true,
       scores: []
     };
   }
