@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router'
 import UserDetails from './UserDetails'
 import UserDetailsWrapper from './UserDetailsWrapper'
+import MainContainer from '../containers/MainContainer'
 
 const PropTypes = React.PropTypes;
 
@@ -20,16 +21,23 @@ function StartOver() {
 }
 
 function Results(props) {
+  if (props.isLoading === true) {
+    return (
+      <p> LOADING </p>
+    )
+  }
+  
   if (props.scores[0] === props.scores[1]) {
-    <div className="jumbotron col-sm-12 text-center transparentBg">
+    <MainContainer>
       <h1>It's tie!</h1>
       <StartOver />
-    </div>
+    </MainContainer>
   }
+  
   const winningIndex = props.scores[0] > props.scores[1] ? 0 : 1;
   const losingIndex = winningIndex === 0 ? 1 : 0;
   return (
-    <div className="jumbotron col-sm-12 text-center transparentBg">
+    <MainContainer>
       <h1>Results</h1>
       <div className="col-sm-8 col-sm-offset-2">
         <UserDetailsWrapper header="Winner">
@@ -40,7 +48,7 @@ function Results(props) {
         </UserDetailsWrapper>
         <StartOver />
       </div>
-    </div>
+    </MainContainer>
   )
 }
 
