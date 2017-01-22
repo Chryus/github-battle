@@ -5,7 +5,8 @@ class Loading extends React.Component {
     super(props)
     this.originalText = "Loading";
     this.state = {
-      text: "Loading"
+      text: "Loading",
+      speed: 300
     };
   }
 
@@ -21,7 +22,7 @@ class Loading extends React.Component {
           text: this.state.text + '.'
         })
       }
-    }, 300)
+    }, this.state.speed)
   }
 
   componentWillUnmount() {
