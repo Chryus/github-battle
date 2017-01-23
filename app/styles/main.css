@@ -1,11 +1,11 @@
 .appear-enter {
-  transition-duration: 1.2s;
+  transition-duration: .7s;
   transition-property: opacity;
   transition-timing-function: ease-out;
   opacity: 0;
 }
 
-.appear-ender.appear-enter-active {
+.appear-enter.appear-enter-active {
   opacity: 1;
 }
 
