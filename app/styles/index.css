@@ -21,18 +21,3 @@
 .content: {
   font-size: 55px;
 }
-
-.appear-enter {
-  transition-duration: .7s;
-  transition-property: opacity;
-  transition-timing-function: ease-out;
-  opacity: 0;
-}
-
-.appear-ender.appear-enter-active {
-  opacity: 1;
-}
-
-.appear-leave {
-  opacity: 0;
-}
