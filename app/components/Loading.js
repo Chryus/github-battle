@@ -13,11 +13,13 @@ class Loading extends React.Component {
   componentDidMount() {
     const stopper = this.originalText + '...';
     this.interval = setInterval(() => {
+      console.log(HERE)
       if (this.state.text === stopper) {
         this.setState({
           text: this.originalText
         })
       } else {
+        console.log("HERE")
         this.setState({
           text: this.state.text + '.'
         })
